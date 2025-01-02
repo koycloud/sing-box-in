@@ -145,8 +145,8 @@ v6=$(curl -s6m5 icanhazip.com -k)
 }
 
 warpcheck(){
-wgcfv6=$(curl -s6m5 https://www.cloudflare.com/cdn-cgi/trace -k | grep warp | cut -d= -f2)
-wgcfv4=$(curl -s4m5 https://www.cloudflare.com/cdn-cgi/trace -k | grep warp | cut -d= -f2)
+wgcfv6=$(curl -s6m5 https://gh.api.99988866.xyz/https://www.cloudflare.com/cdn-cgi/trace -k | grep warp | cut -d= -f2)
+wgcfv4=$(curl -s4m5 https://gh.api.99988866.xyz/https://www.cloudflare.com/cdn-cgi/trace -k | grep warp | cut -d= -f2)
 }
 
 v6(){
@@ -221,9 +221,9 @@ inssb(){
 red "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 green "一、开始下载并安装Sing-box正式版1.10系列内核……请稍等"
 echo
-sbcore=$(curl -Ls https://data.jsdelivr.com/v1/package/gh/SagerNet/sing-box | grep -Eo '"1\.10[0-9\.]*",'  | sed -n 1p | tr -d '",')
+sbcore=$(curl -Ls https://gh.api.99988866.xyz/https://data.jsdelivr.com/v1/package/gh/SagerNet/sing-box | grep -Eo '"1\.10[0-9\.]*",'  | sed -n 1p | tr -d '",')
 sbname="sing-box-$sbcore-linux-$cpu"
-curl -L -o /etc/s-box/sing-box.tar.gz  -# --retry 2 https://github.com/SagerNet/sing-box/releases/download/v$sbcore/$sbname.tar.gz
+curl -L -o /etc/s-box/sing-box.tar.gz  -# --retry 2 https://gh.api.99988866.xyz/https://github.com/SagerNet/sing-box/releases/download/v$sbcore/$sbname.tar.gz
 if [[ -f '/etc/s-box/sing-box.tar.gz' ]]; then
 tar xzf /etc/s-box/sing-box.tar.gz -C /etc/s-box
 mv /etc/s-box/$sbname/sing-box /etc/s-box
@@ -303,7 +303,7 @@ readp "请选择【1-2】：" menu
 if [ -z "$menu" ] || [ "$menu" = "1" ] ; then
 zqzs
 else
-bash <(curl -Ls https://gitlab.com/rwkgyg/acme-script/raw/main/acme.sh)
+bash <(curl -Ls https://gh.api.99988866.xyz/https://gitlab.com/rwkgyg/acme-script/raw/main/acme.sh)
 if [[ ! -f /root/ygkkkca/cert.crt && ! -f /root/ygkkkca/private.key && ! -s /root/ygkkkca/cert.crt && ! -s /root/ygkkkca/private.key ]]; then
 red "Acme证书申请失败，继续使用自签证书" 
 zqzs
@@ -1235,7 +1235,7 @@ cat > /etc/s-box/sing_box_client.json <<EOF
 "vmess-tls-argo临时-$hostname",
 "vmess-argo临时-$hostname"
       ],
-      "url": "https://www.gstatic.com/generate_204",
+      "url": "https://gh.api.99988866.xyz/https://www.gstatic.com/generate_204",
       "interval": "1m",
       "tolerance": 50,
       "interrupt_exist_connections": false
@@ -1247,7 +1247,7 @@ cat > /etc/s-box/sing_box_client.json <<EOF
                 "tag": "geosite-geolocation-!cn",
                 "type": "remote",
                 "format": "binary",
-                "url": "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/geolocation-!cn.srs",
+                "url": "https://gh.api.99988866.xyz/https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/geolocation-!cn.srs",
                 "download_detour": "select",
                 "update_interval": "1d"
             },
@@ -1255,7 +1255,7 @@ cat > /etc/s-box/sing_box_client.json <<EOF
                 "tag": "geosite-cn",
                 "type": "remote",
                 "format": "binary",
-                "url": "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/geolocation-cn.srs",
+                "url": "https://gh.api.99988866.xyz/https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/geolocation-cn.srs",
                 "download_detour": "select",
                 "update_interval": "1d"
             },
@@ -1263,7 +1263,7 @@ cat > /etc/s-box/sing_box_client.json <<EOF
                 "tag": "geoip-cn",
                 "type": "remote",
                 "format": "binary",
-                "url": "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/cn.srs",
+                "url": "https://gh.api.99988866.xyz/https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/cn.srs",
                 "download_detour": "select",
                 "update_interval": "1d"
             }
@@ -1337,10 +1337,10 @@ dns:
     - 223.5.5.5
     - 8.8.8.8
   nameserver:
-    - https://dns.alidns.com/dns-query
-    - https://doh.pub/dns-query
+    - https://gh.api.99988866.xyz/https://dns.alidns.com/dns-query
+    - https://gh.api.99988866.xyz/https://doh.pub/dns-query
   fallback:
-    - https://1.0.0.1/dns-query
+    - https://gh.api.99988866.xyz/https://1.0.0.1/dns-query
     - tls://dns.google
   fallback-filter:
     geoip: true
@@ -1473,7 +1473,7 @@ proxies:
 proxy-groups:
 - name: 负载均衡
   type: load-balance
-  url: https://www.gstatic.com/generate_204
+  url: https://gh.api.99988866.xyz/https://www.gstatic.com/generate_204
   interval: 300
   strategy: round-robin
   proxies:
@@ -1488,7 +1488,7 @@ proxy-groups:
 
 - name: 自动选择
   type: url-test
-  url: https://www.gstatic.com/generate_204
+  url: https://gh.api.99988866.xyz/https://www.gstatic.com/generate_204
   interval: 300
   tolerance: 50
   proxies:
@@ -1786,7 +1786,7 @@ cat > /etc/s-box/sing_box_client.json <<EOF
 "vmess-tls-argo临时-$hostname",
 "vmess-argo临时-$hostname"
       ],
-      "url": "https://www.gstatic.com/generate_204",
+      "url": "https://gh.api.99988866.xyz/https://www.gstatic.com/generate_204",
       "interval": "1m",
       "tolerance": 50,
       "interrupt_exist_connections": false
@@ -1798,7 +1798,7 @@ cat > /etc/s-box/sing_box_client.json <<EOF
                 "tag": "geosite-geolocation-!cn",
                 "type": "remote",
                 "format": "binary",
-                "url": "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/geolocation-!cn.srs",
+                "url": "https://gh.api.99988866.xyz/https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/geolocation-!cn.srs",
                 "download_detour": "select",
                 "update_interval": "1d"
             },
@@ -1806,7 +1806,7 @@ cat > /etc/s-box/sing_box_client.json <<EOF
                 "tag": "geosite-cn",
                 "type": "remote",
                 "format": "binary",
-                "url": "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/geolocation-cn.srs",
+                "url": "https://gh.api.99988866.xyz/https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/geolocation-cn.srs",
                 "download_detour": "select",
                 "update_interval": "1d"
             },
@@ -1814,7 +1814,7 @@ cat > /etc/s-box/sing_box_client.json <<EOF
                 "tag": "geoip-cn",
                 "type": "remote",
                 "format": "binary",
-                "url": "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/cn.srs",
+                "url": "https://gh.api.99988866.xyz/https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/cn.srs",
                 "download_detour": "select",
                 "update_interval": "1d"
             }
@@ -1888,10 +1888,10 @@ dns:
     - 223.5.5.5
     - 8.8.8.8
   nameserver:
-    - https://dns.alidns.com/dns-query
-    - https://doh.pub/dns-query
+    - https://gh.api.99988866.xyz/https://dns.alidns.com/dns-query
+    - https://gh.api.99988866.xyz/https://doh.pub/dns-query
   fallback:
-    - https://1.0.0.1/dns-query
+    - https://gh.api.99988866.xyz/https://1.0.0.1/dns-query
     - tls://dns.google
   fallback-filter:
     geoip: true
@@ -1999,7 +1999,7 @@ proxies:
 proxy-groups:
 - name: 负载均衡
   type: load-balance
-  url: https://www.gstatic.com/generate_204
+  url: https://gh.api.99988866.xyz/https://www.gstatic.com/generate_204
   interval: 300
   strategy: round-robin
   proxies:
@@ -2012,7 +2012,7 @@ proxy-groups:
 
 - name: 自动选择
   type: url-test
-  url: https://www.gstatic.com/generate_204
+  url: https://gh.api.99988866.xyz/https://www.gstatic.com/generate_204
   interval: 300
   tolerance: 50
   proxies:
@@ -2305,7 +2305,7 @@ cat > /etc/s-box/sing_box_client.json <<EOF
 "vmess-tls-argo固定-$hostname",
 "vmess-argo固定-$hostname"
       ],
-      "url": "https://www.gstatic.com/generate_204",
+      "url": "https://gh.api.99988866.xyz/https://www.gstatic.com/generate_204",
       "interval": "1m",
       "tolerance": 50,
       "interrupt_exist_connections": false
@@ -2317,7 +2317,7 @@ cat > /etc/s-box/sing_box_client.json <<EOF
                 "tag": "geosite-geolocation-!cn",
                 "type": "remote",
                 "format": "binary",
-                "url": "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/geolocation-!cn.srs",
+                "url": "https://gh.api.99988866.xyz/https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/geolocation-!cn.srs",
                 "download_detour": "select",
                 "update_interval": "1d"
             },
@@ -2325,7 +2325,7 @@ cat > /etc/s-box/sing_box_client.json <<EOF
                 "tag": "geosite-cn",
                 "type": "remote",
                 "format": "binary",
-                "url": "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/geolocation-cn.srs",
+                "url": "https://gh.api.99988866.xyz/https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/geolocation-cn.srs",
                 "download_detour": "select",
                 "update_interval": "1d"
             },
@@ -2333,7 +2333,7 @@ cat > /etc/s-box/sing_box_client.json <<EOF
                 "tag": "geoip-cn",
                 "type": "remote",
                 "format": "binary",
-                "url": "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/cn.srs",
+                "url": "https://gh.api.99988866.xyz/https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/cn.srs",
                 "download_detour": "select",
                 "update_interval": "1d"
             }
@@ -2407,10 +2407,10 @@ dns:
     - 223.5.5.5
     - 8.8.8.8
   nameserver:
-    - https://dns.alidns.com/dns-query
-    - https://doh.pub/dns-query
+    - https://gh.api.99988866.xyz/https://dns.alidns.com/dns-query
+    - https://gh.api.99988866.xyz/https://doh.pub/dns-query
   fallback:
-    - https://1.0.0.1/dns-query
+    - https://gh.api.99988866.xyz/https://1.0.0.1/dns-query
     - tls://dns.google
   fallback-filter:
     geoip: true
@@ -2516,7 +2516,7 @@ proxies:
 proxy-groups:
 - name: 负载均衡
   type: load-balance
-  url: https://www.gstatic.com/generate_204
+  url: https://gh.api.99988866.xyz/https://www.gstatic.com/generate_204
   interval: 300
   strategy: round-robin
   proxies:
@@ -2529,7 +2529,7 @@ proxy-groups:
 
 - name: 自动选择
   type: url-test
-  url: https://www.gstatic.com/generate_204
+  url: https://gh.api.99988866.xyz/https://www.gstatic.com/generate_204
   interval: 300
   tolerance: 50
   proxies:
@@ -2764,7 +2764,7 @@ cat > /etc/s-box/sing_box_client.json <<EOF
         "hy2-$hostname",
         "tuic5-$hostname"
       ],
-      "url": "https://www.gstatic.com/generate_204",
+      "url": "https://gh.api.99988866.xyz/https://www.gstatic.com/generate_204",
       "interval": "1m",
       "tolerance": 50,
       "interrupt_exist_connections": false
@@ -2776,7 +2776,7 @@ cat > /etc/s-box/sing_box_client.json <<EOF
                 "tag": "geosite-geolocation-!cn",
                 "type": "remote",
                 "format": "binary",
-                "url": "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/geolocation-!cn.srs",
+                "url": "https://gh.api.99988866.xyz/https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/geolocation-!cn.srs",
                 "download_detour": "select",
                 "update_interval": "1d"
             },
@@ -2784,7 +2784,7 @@ cat > /etc/s-box/sing_box_client.json <<EOF
                 "tag": "geosite-cn",
                 "type": "remote",
                 "format": "binary",
-                "url": "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/geolocation-cn.srs",
+                "url": "https://gh.api.99988866.xyz/https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/geolocation-cn.srs",
                 "download_detour": "select",
                 "update_interval": "1d"
             },
@@ -2792,7 +2792,7 @@ cat > /etc/s-box/sing_box_client.json <<EOF
                 "tag": "geoip-cn",
                 "type": "remote",
                 "format": "binary",
-                "url": "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/cn.srs",
+                "url": "https://gh.api.99988866.xyz/https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/cn.srs",
                 "download_detour": "select",
                 "update_interval": "1d"
             }
@@ -2866,10 +2866,10 @@ dns:
     - 223.5.5.5
     - 8.8.8.8
   nameserver:
-    - https://dns.alidns.com/dns-query
-    - https://doh.pub/dns-query
+    - https://gh.api.99988866.xyz/https://dns.alidns.com/dns-query
+    - https://gh.api.99988866.xyz/https://doh.pub/dns-query
   fallback:
-    - https://1.0.0.1/dns-query
+    - https://gh.api.99988866.xyz/https://1.0.0.1/dns-query
     - tls://dns.google
   fallback-filter:
     geoip: true
@@ -2941,7 +2941,7 @@ proxies:
 proxy-groups:
 - name: 负载均衡
   type: load-balance
-  url: https://www.gstatic.com/generate_204
+  url: https://gh.api.99988866.xyz/https://www.gstatic.com/generate_204
   interval: 300
   strategy: round-robin
   proxies:
@@ -2952,7 +2952,7 @@ proxy-groups:
 
 - name: 自动选择
   type: url-test
-  url: https://www.gstatic.com/generate_204
+  url: https://gh.api.99988866.xyz/https://www.gstatic.com/generate_204
   interval: 300
   tolerance: 50
   proxies:
@@ -3046,8 +3046,8 @@ case $(uname -m) in
 aarch64) cpu=arm64;;
 x86_64) cpu=amd64;;
 esac
-curl -L -o /etc/s-box/cloudflared -# --retry 2 https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-$cpu
-#curl -L -o /etc/s-box/cloudflared -# --retry 2 https://gitlab.com/rwkgyg/sing-box-yg/-/raw/main/$cpu
+curl -L -o /etc/s-box/cloudflared -# --retry 2 https://gh.api.99988866.xyz/https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-$cpu
+#curl -L -o /etc/s-box/cloudflared -# --retry 2 https://gh.api.99988866.xyz/https://gitlab.com/rwkgyg/sing-box-yg/-/raw/main/$cpu
 chmod +x /etc/s-box/cloudflared
 fi
 }
@@ -3115,7 +3115,7 @@ fi
 /etc/s-box/cloudflared tunnel --url http://localhost:$(sed 's://.*::g' /etc/s-box/sb.json | jq -r '.inbounds[1].listen_port') --edge-ip-version auto --no-autoupdate --protocol http2 > /etc/s-box/argo.log 2>&1 &
 echo "$!" > /etc/s-box/sbargopid.log
 sleep 20
-if [[ -n $(curl -sL https://$(cat /etc/s-box/argo.log 2>/dev/null | grep -a trycloudflare.com | awk 'NR==2{print}' | awk -F// '{print $2}' | awk '{print $1}')/ -I | awk 'NR==1 && /404|400|503/') ]]; then
+if [[ -n $(curl -sL https://gh.api.99988866.xyz/https://$(cat /etc/s-box/argo.log 2>/dev/null | grep -a trycloudflare.com | awk 'NR==2{print}' | awk -F// '{print $2}' | awk '{print $1}')/ -I | awk 'NR==1 && /404|400|503/') ]]; then
 argo=$(cat /etc/s-box/argo.log 2>/dev/null | grep -a trycloudflare.com | awk 'NR==2{print}' | awk -F// '{print $2}' | awk '{print $1}')
 blue "Argo临时隧道申请成功，域名验证有效：$argo" && sleep 2
 break
@@ -3161,14 +3161,14 @@ private_key=$(echo "$key_pair" | awk '/PrivateKey/ {print $2}' | tr -d '"')
 public_key=$(echo "$key_pair" | awk '/PublicKey/ {print $2}' | tr -d '"')
 echo "$public_key" > /etc/s-box/public.key
 short_id=$(/etc/s-box/sing-box generate rand --hex 4)
-wget -q -O /root/geoip.db https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geoip.db
-wget -q -O /root/geosite.db https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geosite.db
+wget -q -O /root/geoip.db https://gh.api.99988866.xyz/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geoip.db
+wget -q -O /root/geosite.db https://gh.api.99988866.xyz/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geosite.db
 red "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 green "五、自动生成warp-wireguard出站账户" && sleep 2
 warpwg
 inssbjsonser && sbservice && sbactive
-#curl -sL https://gitlab.com/rwkgyg/sing-box-yg/-/raw/main/version/version | awk -F "更新内容" '{print $1}' | head -n 1 > /etc/s-box/v
-curl -sL https://raw.githubusercontent.com/yonggekkk/sing-box-yg/main/version | awk -F "更新内容" '{print $1}' | head -n 1 > /etc/s-box/v
+#curl -sL https://gh.api.99988866.xyz/https://gitlab.com/rwkgyg/sing-box-yg/-/raw/main/version/version | awk -F "更新内容" '{print $1}' | head -n 1 > /etc/s-box/v
+curl -sL https://gh.api.99988866.xyz/https://raw.githubusercontent.com/yonggekkk/sing-box-yg/main/version | awk -F "更新内容" '{print $1}' | head -n 1 > /etc/s-box/v
 clear
 red "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 lnsb && blue "Sing-box-yg脚本安装成功，脚本快捷方式：sb" && cronsb && sleep 1
@@ -3589,7 +3589,7 @@ message_text_m9=$(echo "$m9")
 message_text_m10=$(echo "$m10")
 message_text_m11=$(echo "$m11")
 MODE=HTML
-URL="https://api.telegram.org/bottelegram_token/sendMessage"
+URL="https://gh.api.99988866.xyz/https://api.telegram.org/bottelegram_token/sendMessage"
 res=$(timeout 20s curl -s -X POST $URL -d chat_id=telegram_id  -d parse_mode=${MODE} --data-urlencode "text=🚀【 Vless-reality-vision 分享链接 】：支持v2rayng、nekobox "$'"'"'\n\n'"'"'"${message_text_m1}")
 if [[ -f /etc/s-box/vm_ws.txt ]]; then
 res=$(timeout 20s curl -s -X POST $URL -d chat_id=telegram_id  -d parse_mode=${MODE} --data-urlencode "text=🚀【 Vmess-ws 分享链接 】：支持v2rayng、nekobox "$'"'"'\n\n'"'"'"${message_text_m2}")
@@ -3751,20 +3751,20 @@ branches=$(git branch)
 if [[ $branches == *master* ]]; then
 git branch -m master main >/dev/null 2>&1
 fi
-git remote add origin https://${token}@gitlab.com/${userid}/${project}.git >/dev/null 2>&1
+git remote add origin https://gh.api.99988866.xyz/https://${token}@gitlab.com/${userid}/${project}.git >/dev/null 2>&1
 if [[ $(ls -a | grep '^\.git$') ]]; then
 cat > /etc/s-box/gitpush.sh <<EOF
 #!/usr/bin/expect
 spawn bash -c "git push -f origin main${gitlab_ml}"
-expect "Password for 'https://$(cat /etc/s-box/gitlabtoken.txt 2>/dev/null)@gitlab.com':"
+expect "Password for 'https://gh.api.99988866.xyz/https://$(cat /etc/s-box/gitlabtoken.txt 2>/dev/null)@gitlab.com':"
 send "$(cat /etc/s-box/gitlabtoken.txt 2>/dev/null)\r"
 interact
 EOF
 chmod +x gitpush.sh
 ./gitpush.sh "git push -f origin main${gitlab_ml}" cat /etc/s-box/gitlabtoken.txt >/dev/null 2>&1
-echo "https://gitlab.com/api/v4/projects/${userid}%2F${project}/repository/files/sing_box_client.json/raw?ref=${git_sk}&private_token=${token}" > /etc/s-box/sing_box_gitlab.txt
-echo "https://gitlab.com/api/v4/projects/${userid}%2F${project}/repository/files/clash_meta_client.yaml/raw?ref=${git_sk}&private_token=${token}" > /etc/s-box/clash_meta_gitlab.txt
-echo "https://gitlab.com/api/v4/projects/${userid}%2F${project}/repository/files/jh_sub.txt/raw?ref=${git_sk}&private_token=${token}" > /etc/s-box/jh_sub_gitlab.txt
+echo "https://gh.api.99988866.xyz/https://gitlab.com/api/v4/projects/${userid}%2F${project}/repository/files/sing_box_client.json/raw?ref=${git_sk}&private_token=${token}" > /etc/s-box/sing_box_gitlab.txt
+echo "https://gh.api.99988866.xyz/https://gitlab.com/api/v4/projects/${userid}%2F${project}/repository/files/clash_meta_client.yaml/raw?ref=${git_sk}&private_token=${token}" > /etc/s-box/clash_meta_gitlab.txt
+echo "https://gh.api.99988866.xyz/https://gitlab.com/api/v4/projects/${userid}%2F${project}/repository/files/jh_sub.txt/raw?ref=${git_sk}&private_token=${token}" > /etc/s-box/jh_sub_gitlab.txt
 clsbshow
 else
 yellow "设置Gitlab订阅链接失败，请反馈"
@@ -3827,7 +3827,7 @@ reg(){
 keypair=$(openssl genpkey -algorithm X25519|openssl pkey -text -noout)
 private_key=$(echo "$keypair" | awk '/priv:/{flag=1; next} /pub:/{flag=0} flag' | tr -d '[:space:]' | xxd -r -p | base64)
 public_key=$(echo "$keypair" | awk '/pub:/{flag=1} flag' | tr -d '[:space:]' | xxd -r -p | base64)
-curl -X POST 'https://api.cloudflareclient.com/v0a2158/reg' -sL --tlsv1.3 \
+curl -X POST 'https://gh.api.99988866.xyz/https://api.cloudflareclient.com/v0a2158/reg' -sL --tlsv1.3 \
 -H 'CF-Client-Version: a-7.21-0721' -H 'Content-Type: application/json' \
 -d \
 '{
@@ -3901,15 +3901,15 @@ sed -i "165s/$wgres/$menu/g" /etc/s-box/sb.json
 restartsb
 green "设置结束"
 green "可以先在选项5-1或5-2使用完整域名分流：cloudflare.com"
-green "然后使用任意节点打开网页https://cloudflare.com/cdn-cgi/trace，查看当前WARP账户类型"
+green "然后使用任意节点打开网页https://gh.api.99988866.xyz/https://cloudflare.com/cdn-cgi/trace，查看当前WARP账户类型"
 elif  [ "$menu" = "2" ]; then
 green "请稍等……更新中……"
 if [ -z $(curl -s4m5 icanhazip.com -k) ]; then
-curl -sSL https://gitlab.com/rwkgyg/CFwarp/raw/main/point/endip.sh -o endip.sh && chmod +x endip.sh && (echo -e "1\n2\n") | bash endip.sh > /dev/null 2>&1
+curl -sSL https://gh.api.99988866.xyz/https://gitlab.com/rwkgyg/CFwarp/raw/main/point/endip.sh -o endip.sh && chmod +x endip.sh && (echo -e "1\n2\n") | bash endip.sh > /dev/null 2>&1
 nwgip=$(awk -F, 'NR==2 {print $1}' /root/result.csv 2>/dev/null | grep -o '\[.*\]' | tr -d '[]')
 nwgpo=$(awk -F, 'NR==2 {print $1}' /root/result.csv 2>/dev/null | awk -F "]" '{print $2}' | tr -d ':')
 else
-curl -sSL https://gitlab.com/rwkgyg/CFwarp/raw/main/point/endip.sh -o endip.sh && chmod +x endip.sh && (echo -e "1\n1\n") | bash endip.sh > /dev/null 2>&1
+curl -sSL https://gh.api.99988866.xyz/https://gitlab.com/rwkgyg/CFwarp/raw/main/point/endip.sh -o endip.sh && chmod +x endip.sh && (echo -e "1\n1\n") | bash endip.sh > /dev/null 2>&1
 nwgip=$(awk -F, 'NR==2 {print $1}' /root/result.csv 2>/dev/null | awk -F: '{print $1}')
 nwgpo=$(awk -F, 'NR==2 {print $1}' /root/result.csv 2>/dev/null | awk -F: '{print $2}')
 fi
@@ -4321,7 +4321,7 @@ rm /tmp/crontab.tmp
 
 lnsb(){
 rm -rf /usr/bin/sb
-curl -L -o /usr/bin/sb -# --retry 2 --insecure https://raw.githubusercontent.com/yonggekkk/sing-box-yg/main/sb.sh
+curl -L -o /usr/bin/sb -# --retry 2 --insecure https://gh.api.99988866.xyz/https://raw.githubusercontent.com/yonggekkk/sing-box-yg/main/sb.sh
 chmod +x /usr/bin/sb
 }
 
@@ -4330,13 +4330,13 @@ if [[ ! -f '/usr/bin/sb' ]]; then
 red "未正常安装Sing-box-yg" && exit
 fi
 lnsb
-curl -sL https://raw.githubusercontent.com/yonggekkk/sing-box-yg/main/version | awk -F "更新内容" '{print $1}' | head -n 1 > /etc/s-box/v
+curl -sL https://gh.api.99988866.xyz/https://raw.githubusercontent.com/yonggekkk/sing-box-yg/main/version | awk -F "更新内容" '{print $1}' | head -n 1 > /etc/s-box/v
 green "Sing-box-yg安装脚本升级成功" && sleep 5 && sb
 }
 
 lapre(){
-latcore=$(curl -Ls https://data.jsdelivr.com/v1/package/gh/SagerNet/sing-box | grep -Eo '"[0-9.]+",' | sed -n 1p | tr -d '",')
-precore=$(curl -Ls https://data.jsdelivr.com/v1/package/gh/SagerNet/sing-box | grep -Eo '"[0-9.]*-[^"]*"' | sed -n 1p | tr -d '",')
+latcore=$(curl -Ls https://gh.api.99988866.xyz/https://data.jsdelivr.com/v1/package/gh/SagerNet/sing-box | grep -Eo '"[0-9.]+",' | sed -n 1p | tr -d '",')
+precore=$(curl -Ls https://gh.api.99988866.xyz/https://data.jsdelivr.com/v1/package/gh/SagerNet/sing-box | grep -Eo '"[0-9.]*-[^"]*"' | sed -n 1p | tr -d '",')
 inscore=$(/etc/s-box/sing-box version 2>/dev/null | awk '/version/{print $NF}')
 }
 
@@ -4350,12 +4350,12 @@ green "3：切换Sing-box某个正式版或测试版，需指定版本号 (建�
 green "0：返回上层"
 readp "请选择【0-3】：" menu
 if [ "$menu" = "1" ]; then
-upcore=$(curl -Ls https://data.jsdelivr.com/v1/package/gh/SagerNet/sing-box | grep -Eo '"[0-9.]+",' | sed -n 1p | tr -d '",')
+upcore=$(curl -Ls https://gh.api.99988866.xyz/https://data.jsdelivr.com/v1/package/gh/SagerNet/sing-box | grep -Eo '"[0-9.]+",' | sed -n 1p | tr -d '",')
 elif [ "$menu" = "2" ]; then
-upcore=$(curl -Ls https://data.jsdelivr.com/v1/package/gh/SagerNet/sing-box | grep -Eo '"[0-9.]*-[^"]*"' | sed -n 1p | tr -d '",')
+upcore=$(curl -Ls https://gh.api.99988866.xyz/https://data.jsdelivr.com/v1/package/gh/SagerNet/sing-box | grep -Eo '"[0-9.]*-[^"]*"' | sed -n 1p | tr -d '",')
 elif [ "$menu" = "3" ]; then
 echo
-red "注意: 版本号在 https://github.com/SagerNet/sing-box/tags 可查，且有Downloads字样 (建议1.10.0以上版本)"
+red "注意: 版本号在 https://gh.api.99988866.xyz/https://github.com/SagerNet/sing-box/tags 可查，且有Downloads字样 (建议1.10.0以上版本)"
 green "正式版版本号格式：数字.数字.数字 (例：1.10.0   注意，1.10系列内核支持geosite分流，1.10以上版本不支持geosite分流)"
 green "测试版版本号格式：数字.数字.数字-alpha或rc或beta.数字 (例：1.10.0-alpha或rc或beta.1)"
 readp "请输入Sing-box版本号：" upcore
@@ -4365,7 +4365,7 @@ fi
 if [[ -n $upcore ]]; then
 green "开始下载并更新Sing-box内核……请稍等"
 sbname="sing-box-$upcore-linux-$cpu"
-curl -L -o /etc/s-box/sing-box.tar.gz  -# --retry 2 https://github.com/SagerNet/sing-box/releases/download/v$upcore/$sbname.tar.gz
+curl -L -o /etc/s-box/sing-box.tar.gz  -# --retry 2 https://gh.api.99988866.xyz/https://github.com/SagerNet/sing-box/releases/download/v$upcore/$sbname.tar.gz
 if [[ -f '/etc/s-box/sing-box.tar.gz' ]]; then
 tar xzf /etc/s-box/sing-box.tar.gz -C /etc/s-box
 mv /etc/s-box/$sbname/sing-box /etc/s-box
@@ -4451,7 +4451,7 @@ iptables -t nat -F PREROUTING >/dev/null 2>&1
 netfilter-persistent save >/dev/null 2>&1
 service iptables save >/dev/null 2>&1
 green "Sing-box卸载完成！"
-blue "欢迎继续使用Sing-box-yg脚本：bash <(curl -Ls https://raw.githubusercontent.com/yonggekkk/sing-box-yg/main/sb.sh)"
+blue "欢迎继续使用Sing-box-yg脚本：bash <(curl -Ls https://gh.api.99988866.xyz/https://raw.githubusercontent.com/yonggekkk/sing-box-yg/main/sb.sh)"
 echo
 }
 
@@ -4565,17 +4565,17 @@ fi
 }
 
 acme(){
-bash <(curl -Ls https://gitlab.com/rwkgyg/acme-script/raw/main/acme.sh)
+bash <(curl -Ls https://gh.api.99988866.xyz/https://gitlab.com/rwkgyg/acme-script/raw/main/acme.sh)
 }
 cfwarp(){
-bash <(curl -Ls https://gitlab.com/rwkgyg/CFwarp/raw/main/CFwarp.sh)
+bash <(curl -Ls https://gh.api.99988866.xyz/https://gitlab.com/rwkgyg/CFwarp/raw/main/CFwarp.sh)
 }
 bbr(){
 if [[ $vi =~ lxc|openvz ]]; then
 yellow "当前VPS的架构为 $vi，不支持开启原版BBR加速" && sleep 2 && exit 
 else
 green "点击任意键，即可开启BBR加速，ctrl+c退出"
-bash <(curl -Ls https://raw.githubusercontent.com/teddysun/across/master/bbr.sh)
+bash <(curl -Ls https://gh.api.99988866.xyz/https://raw.githubusercontent.com/teddysun/across/master/bbr.sh)
 fi
 }
 
@@ -4687,7 +4687,7 @@ case $(uname -m) in
 aarch64) cpu=arm64;;
 x86_64) cpu=amd64;;
 esac
-curl -L -o /etc/s-box/sbwpph -# --retry 2 --insecure https://raw.githubusercontent.com/yonggekkk/sing-box-yg/main/sbwpph_$cpu
+curl -L -o /etc/s-box/sbwpph -# --retry 2 --insecure https://gh.api.99988866.xyz/https://raw.githubusercontent.com/yonggekkk/sing-box-yg/main/sbwpph_$cpu
 chmod +x /etc/s-box/sbwpph
 fi
 if [[ -n $(ps -e | grep sbwpph) ]]; then
@@ -4840,14 +4840,14 @@ green "14. 添加 WARP-plus-Socks5 代理模式 【本地Warp/多地区Psiphon-V
 green " 0. 退出脚本"
 red "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 insV=$(cat /etc/s-box/v 2>/dev/null)
-latestV=$(curl -sL https://raw.githubusercontent.com/yonggekkk/sing-box-yg/main/version | awk -F "更新内容" '{print $1}' | head -n 1)
+latestV=$(curl -sL https://gh.api.99988866.xyz/https://raw.githubusercontent.com/yonggekkk/sing-box-yg/main/version | awk -F "更新内容" '{print $1}' | head -n 1)
 if [ -f /etc/s-box/v ]; then
 if [ "$insV" = "$latestV" ]; then
 echo -e "当前 Sing-box-yg 脚本最新版：${bblue}${insV}${plain} (已安装)"
 else
 echo -e "当前 Sing-box-yg 脚本版本号：${bblue}${insV}${plain}"
 echo -e "检测到最新 Sing-box-yg 脚本版本号：${yellow}${latestV}${plain} (可选择7进行更新)"
-echo -e "${yellow}$(curl -sL https://raw.githubusercontent.com/yonggekkk/sing-box-yg/main/version)${plain}"
+echo -e "${yellow}$(curl -sL https://gh.api.99988866.xyz/https://raw.githubusercontent.com/yonggekkk/sing-box-yg/main/version)${plain}"
 fi
 else
 echo -e "当前 Sing-box-yg 脚本版本号：${bblue}${latestV}${plain}"
